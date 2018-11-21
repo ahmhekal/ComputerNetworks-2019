@@ -139,14 +139,11 @@ verifier(codeword_after_alter, key)
 
 # In[ ]:
 
-
-message=input("please enter a message ")
-key= input("please enter a key ")
-command= input("enter a command")
-
-
-# In[ ]:
-
-
-CRC (command,message,key)
-command=input("please enter exit")
+while(True):
+    message=input("please enter a message ")
+    key= input("please enter a key ")
+    command= input("enter a command")
+    CRC (command,message,key)
+    INput=input("enter exit to exit the program or anything else to try another command")
+    if(INput=="exit"):
+        break
