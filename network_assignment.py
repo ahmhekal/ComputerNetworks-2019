@@ -149,3 +149,4 @@ command= input("enter a command")
 
 
 CRC (command,message,key)
+command=input("please enter exit")
