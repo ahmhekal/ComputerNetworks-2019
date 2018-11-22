@@ -51,7 +51,7 @@ def Generator(data, key):
     print("Transmitted message (Data + Remainder) : ",
           codeword)
 
-    handle = open('transmitted.txt', 'w') #to write the transmitted message in a file
+    handle = open('transmitted_message.txt', 'w') #to write the transmitted message in a file
     handle.write(codeword)
     handle.close()
 
@@ -63,10 +63,10 @@ def Generator(data, key):
 def verifier(codeword, key):
     reminder=mod2div(codeword, key)
     if int(reminder)==0:
-        print("correct")
+        print("message is correct")
 
     else:
-        print("incorrect")
+        print("message is not correct")
 
 
 
@@ -145,6 +145,10 @@ while(True):
     ###To take the command
     command=input("please enter the command \n")
     command = command.replace("<", "")
+    command = command.replace(">", "")
+    command = command.replace("-", "")
+
+
     c=command.split()
     file_name=c[1][0:]
 
@@ -158,7 +162,7 @@ while(True):
     lines = file.readlines()
     message=lines[0][:-1]
     key=lines[1]
-    CRC (command,message,key) 
+    CRC (command,message,key)
     INput=input("enter exit to exit the program or press enter to try another command \n")
     if(INput=="exit"):
         break
