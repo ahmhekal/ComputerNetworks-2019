@@ -140,9 +140,13 @@ verifier(codeword_after_alter, key)
 # In[ ]:
 
 while(True):
-    message=input("please enter a message ")
-    key= input("please enter a key ")
-    command= input("enter a command")
+    command=input("please enter the command ")
+    c=command.split()
+    file_name=c[1][1:]
+    file = open(file_name, 'r')
+    lines = file.readlines()
+    message=lines[0][:-1]
+    key=lines[1]
     CRC (command,message,key)
     INput=input("enter exit to exit the program or anything else to try another command")
     if(INput=="exit"):
