@@ -1,5 +1,3 @@
-
-
 def xor(a, b):
 
     result = []
@@ -11,8 +9,6 @@ def xor(a, b):
             result.append('1')
 
     return ''.join(result)
-
-
 
 
 def mod2div(divident, divisor):
@@ -54,6 +50,11 @@ def Generator(data, key):
     print("Remainder : ", remainder)
     print("Transmitted message (Data + Remainder) : ",
           codeword)
+
+    handle = open('transmitted.txt', 'w') #to write the transmitted message in a file
+    handle.write(codeword)
+    handle.close()
+
     return codeword
 
 
@@ -140,14 +141,24 @@ verifier(codeword_after_alter, key)
 # In[ ]:
 
 while(True):
-    command=input("please enter the command ")
+
+    ###To take the command
+    command=input("please enter the command \n")
+    command = command.replace("<", "")
     c=command.split()
-    file_name=c[1][1:]
-    file = open(file_name, 'r')
+    file_name=c[1][0:]
+
+    ###To check that the file name is correct
+    try:
+        file = open(file_name, 'r')
+    except FileNotFoundError:
+        print("Wrong file name,re-enter the command with the correct file name ! \n")
+        continue
+
     lines = file.readlines()
     message=lines[0][:-1]
     key=lines[1]
-    CRC (command,message,key)
-    INput=input("enter exit to exit the program or anything else to try another command")
+    CRC (command,message,key) 
+    INput=input("enter exit to exit the program or press enter to try another command \n")
     if(INput=="exit"):
         break
